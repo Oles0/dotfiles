@@ -1,4 +1,4 @@
-#~/.dotfiles
+# ~/.dotfiles
 Configuration for Arch Linux, sway, zsh, waybar and more
 ## Setup
 #### System
