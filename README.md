@@ -16,3 +16,8 @@ Configuration for Arch Linux, sway, zsh, waybar and more
 #### Apearance
 * GTK theme - [Nordic](https://github.com/EliverLara/Nordic)
 * Qt theme - [Nordic (Kvantum theme)](https://github.com/EliverLara/Nordic/tree/master/kde/kvantum/Nordic)
+***
+## Screenshots
+![Desktop](https://github.com/Oles0/dotfiles/blob/master/Screenshots/Desktop.png)
+![Application launcher](https://github.com/Oles0/dotfiles/blob/master/Screenshots/Application%20launcher.png)
+![neofetch](https://github.com/Oles0/dotfiles/blob/master/Screenshots/neofetch.png)
