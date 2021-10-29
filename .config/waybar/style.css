@@ -1,0 +1,55 @@
+@define-color background #2E3440;
+@define-color foreground #D8DEE9;
+@define-color yellow     #EBCB8B;
+@define-color red        #BF616A;
+@define-color green      #A3BE8C;
+@define-color backround  #4C566A;
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+#clock {
+  padding: 0 3px;
+  margin: 0 3px;
+}
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: @foreground;
+}
+#workspaces button.urgent {
+    background-color: @red ;
+}
+#workspaces button.focused {
+    background: @backround;
+}
+#custom-spotify  {
+  padding: 0 3px;
+  margin: 0 3px;
+
+}
+#pulseaudio  {
+  padding: 0 3px;
+  margin: 0 3px;
+}
+#network  {
+  padding: 0 3px;
+  margin: 0 3px;
+}
+#battery {
+  padding: 0 3px;
+  margin: 0 3px;
+}
+#sway-language {
+  padding: 0 3px;
+  margin: 0 3px;
+}

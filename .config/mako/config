@@ -1,0 +1,6 @@
+max-history=3
+sort=-time
+background-color=#2E3440ff
+text-color=#D8DEE9ff
+border-color=#8FBCBBff
+default-timeout=5000
