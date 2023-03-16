@@ -1,0 +1,82 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 0,
+    "exclusive": true,
+    "passthrough": false,
+    "fixed-center": true,
+    "modules-left": ["wlr/workspaces"],
+    "modules-right": ["battery", "backlight", "pulseaudio#microphone", "pulseaudio", "network", "hyprland/language", "clock#date", "clock"],
+    "wlr/workspaces": {
+        "all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+        "format": "{name}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "custom/power": {
+        "tooltip":false,
+        "on-click":"power-menu",
+        "format":"󰤆"
+    },
+    "clock":{
+        "tooltip":false,
+        "format":"󱑎 {:%H:%M}"
+    },
+    "clock#date":{
+        "format":"󰃶 {:%a %d %b}",
+        "tooltip-format":"<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰋙", "󰫃", "󰫄", "󰫅", "󰫆", "󰫇", "󰫈"]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "tooltip-format":"{timeTo}, {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂃","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+    },
+    "hyprland/language":{
+        "format":" {}",
+        "format-en":"en",
+        "format-uk":"ua"
+    },
+    "network": {
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+        "tooltip-format": "󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}\n{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)",
+        "format-disconnected": "󰖪",
+        "format-alt": "󱛇"
+    },
+    "pulseaudio": {
+        "tooltip":false,
+        "format": "{icon} {volume}%",
+        "tooltip-format":"{desc}, {volume}%",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click":"pamixer -t",
+        "on-scroll-up":"pamixer -d 1",
+        "on-scroll-down":"pamixer -i 1"
+    },
+    "pulseaudio#microphone":{
+        "tooltip":false,
+        "format": "󰍬 {format_source}",
+        "format-source":"󰍬 {volume}%",
+        "format-muted": "󰍭",
+        "on-click":"pamixer --default-source -t",
+        "on-scroll-up":"pamixer --default-source -d 1",
+        "on-scroll-down":"pamixer --default-source -i 1"
+    }
+}
+
