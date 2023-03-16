@@ -1,5 +1,5 @@
 # ~/.dotfiles
-Configuration for Arch Linux, sway, zsh, waybar and more
+Configuration for Arch Linux, hyprland, fish, waybar and more
 ## Setup
 #### System
 * Operating system - [Arch Linux](https://archlinux.org/)
