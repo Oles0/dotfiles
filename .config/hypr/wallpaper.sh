@@ -12,5 +12,5 @@ x="$(hyprctl cursorpos -j | jq '.x/1920')"
 # echo $x
 y="$(hyprctl cursorpos -j | jq '(1080-.y)/1080')"
 # echo $y
-swww img "${files[$index]}" -t grow --transition-pos $x,$y --transition-step 255 --transition-fps 144
+swww img "${files[$index]}" -t grow --transition-pos $x,$y --transition-step 255 --transition-fps 144 --transition-duration 3
 exit 0
