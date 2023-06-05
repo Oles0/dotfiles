@@ -4,7 +4,7 @@ Configuration for Arch Linux, hyprland, fish, waybar and more
 #### System
 * Operating system - [Arch Linux](https://archlinux.org/)
 * Shell - [fish](https://github.com/fish-shell/fish-shell)
-* Wayland compositor - [hyprland](https://github.com/hyprwm/Hyprland)
+* Wayland compositor - [sway](https://github.com/swaywm/sway/)
 #### Programs and utilities
 * Application launcher - [rofi](https://github.com/lbonn/rofi)
 * Status bar - [waybar](https://github.com/Alexays/Waybar)

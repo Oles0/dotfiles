@@ -1,0 +1,160 @@
+set {
+    $mod Mod4
+    $term foot
+}
+
+exec {
+    wl-paste --watch cliphist store
+    cd ~/.startpage && python -m http.server 9999
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+}
+
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Mauve-Dark'
+  gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+  gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin-Mocha-Mauve-Cursors'
+}
+
+output * {
+  bg "#1e1e2e" solid_color
+}
+
+output HEADLESS-1 {
+  pos 1920,0
+  mode 1200x1920@120Hz
+  
+
+}
+
+smart_borders on
+
+bindsym --to-code {
+    $mod+space exec $term
+    $mod+f exec firefox
+    $mod+c exec code
+    $mod+e exec nautilus
+    $mod+Shift+q kill
+    $mod+d exec rofi -show drun
+    $mod+v exec rofi -modi clipboard:~/.cl -show clipboard
+    $mod+Shift+c reload
+    $mod+Shift+e exec swaymsg exit
+    $mod+Left focus left
+    $mod+Down focus down
+    $mod+Up focus up
+    $mod+Right focus right
+    $mod+Shift+Left move left
+    $mod+Shift+Down move down
+    $mod+Shift+Up move up
+    $mod+Shift+Right move right
+    $mod+Control+Shift+Left  move workspace to output left
+    $mod+Control+Shift+Right move workspace to output right
+    $mod+Control+Shift+Up    move workspace to output up
+    $mod+Control+Shift+Down  move workspace to output down
+    $mod+1 workspace number 1
+    $mod+2 workspace number 2
+    $mod+3 workspace number 3
+    $mod+4 workspace number 4
+    $mod+5 workspace number 5
+    $mod+6 workspace number 6
+    $mod+7 workspace number 7
+    $mod+8 workspace number 8
+    $mod+9 workspace number 9
+    $mod+0 workspace number 10
+    $mod+Shift+1 move container to workspace number 1
+    $mod+Shift+2 move container to workspace number 2
+    $mod+Shift+3 move container to workspace number 3
+    $mod+Shift+4 move container to workspace number 4
+    $mod+Shift+5 move container to workspace number 5
+    $mod+Shift+6 move container to workspace number 6
+    $mod+Shift+7 move container to workspace number 7
+    $mod+Shift+8 move container to workspace number 8
+    $mod+Shift+9 move container to workspace number 9
+    $mod+Shift+0 move container to workspace number 10
+    # $mod+b splith
+    # $mod+v splitv
+    $mod+s layout stacking
+    $mod+w layout tabbed
+    $mod+z layout toggle split
+    $mod+Shift+f fullscreen
+    $mod+Shift+space floating toggle
+    $mod+Return focus mode_toggle
+    $mod+r exec grim -g "$(slurp)" -t ppm - | tesseract - - -l ukr+eng | wl-copy
+    $mod+p exec rofi -show p -modi p:'rofi-power-menu --no-symbols' -font "JetBrains Mono NF 16" -theme-str 'window {width: 10em;} listview {lines: 6;}' -xoffset 0 -yoffset 0
+}
+
+bindsym --locked {
+    # Brightness
+    --locked XF86MonBrightnessDown exec light -T 0.72
+    --locked XF86MonBrightnessUp exec light -T 1.4
+    # Media keys
+    --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    --locked XF86AudioNext exec playerctl next
+    --locked XF86AudioPrev exec playerctl previous
+    --locked XF86AudioPlay exec playerctl play-pause
+    --locked Print exec wayshot -f Screenshots/$(date +%d.%m.%y_%T_screenshot.png).png
+    --locked Ctrl+Print exec wayshot --stdout | wl-copy
+    --locked Shift+Print exec wayshot -s "$(slurp -f '%x %y %w %h')" -f Screenshots/$(date +%d.%m.%y_%T_screenshot.png).png
+}
+
+default_border pixel 2
+# Color scheme (ctp)
+set $color_normal_white  #b4befe
+set $color_bright_white  #cdd6f4
+set $color_normal_gray   #585b70
+set $color_bright_gray   #1e1e2e
+set $color_bright_yellow #cba6f7
+set $color_bright_red    #f38ba8
+set $color_normal_black  #11111b
+set $color_unused        #111111
+
+# Colors                  border                 background             text                   indicator              child_border
+client.focused            $color_bright_yellow   $color_bright_gray     $color_bright_white    $color_bright_yellow   $color_bright_yellow
+client.focused_inactive   $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray     $color_normal_black
+client.unfocused          $color_normal_gray     $color_normal_gray     $color_normal_white    $color_normal_gray     $color_normal_black
+client.urgent             $color_bright_red      $color_bright_red      $color_normal_black    $color_unused          $color_unused
+client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused          $color_unused
+
+
+
+floating_modifier $mod normal
+
+xwayland enable
+
+seat * {
+    hide_cursor 30000
+}
+
+input type:touchpad {
+  accel_profile adaptive
+  drag enabled
+  dwt enabled
+  natural_scroll enabled
+  scroll_method two_finger
+  tap enabled
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us,ua
+    xkb_options grp:alt_shift_toggle
+    xkb_capslock disabled
+    # xkb_numlock enabled
+}
+
+
+
+bindgesture swipe:3:left workspace next
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:up workspace next
+bindgesture swipe:3:down workspace prev
+
+
+exec_always autotiling
+
+bar {
+  swaybar_command waybar
+}
+
+include /etc/sway/config.d/*

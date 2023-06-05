@@ -1,0 +1,99 @@
+{
+    "position": "left",
+    "output": [
+        "eDP-1"
+    ],
+    "modules-left": [
+        "custom/arch",
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "custom/separator",
+        "clock"
+    ],
+    "sway/workspaces": {
+        "all-outputs": true,
+        "format": "",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "clock": {
+        "format": "{:%H\n%M}",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+    "custom/arch": {
+        "format": "󰊠",
+        "on-click": "rofi -show drun",
+        "tooltip-format": ""
+    },
+    "custom/separator": {
+        "format": "────"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "tooltip-format": "{timeTo}, {capacity}%",
+        "format-charging": "󰂄",
+        "format-plugged": "󰚥",
+        // "format-alt": "{time} {icon}",
+        "format-icons": [
+            "󰂃",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-icons": [
+            "󰋙",
+            "󰫃",
+            "󰫄",
+            "󰫅",
+            "󰫆",
+            "󰫇",
+            "󰫈"
+        ]
+    },
+    "network": {
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰈀",
+        "tooltip-format": "󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}\n{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)",
+        "format-disconnected": "󰖪"
+    },
+    "pulseaudio": {
+        "tooltip": false,
+        "format": "{icon}",
+        "tooltip-format": "{desc}, {volume}%",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -d 1",
+        "on-scroll-down": "pamixer -i 1"
+    }
+}
